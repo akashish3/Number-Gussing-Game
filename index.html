@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Guessing Game - Pro Edition</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="criticalEffect" class="critical-overlay"></div>
+    
+    <canvas id="particleCanvas"></canvas>
+
+    <div class="container" id="gameCard">
+        <div class="theme-panel">
+            <div class="theme-dot neon-dot" onclick="setTheme('neon')"></div>
+            <div class="theme-dot forest-dot" onclick="setTheme('forest')"></div>
+            <div class="theme-dot retro-dot" onclick="setTheme('retro')"></div>
+        </div>
+
+        <div class="timer-container"><div id="timerBar"></div></div>
+        
+        <div class="high-score">
+            🏆 Best Level: <span id="bestLevel">1</span> | Streak: <span id="streakDisplay">0</span>
+        </div>
+
+        <h2 id="lvlDisplay">Level 1</h2>
+
+        <div class="stats-grid">
+            <div class="stat-box"><span>Target Range</span><b id="rangeDisp">1-10</b></div>
+            <div class="stat-box"><span>Current Score</span><b id="scoreDisp">100</b></div>
+        </div>
+
+        <div class="input-group">
+            <input type="number" id="guessInput" placeholder="?" autocomplete="off">
+            <button class="btn-hint" id="hintBtn" onclick="getHint()">💡 Hint (-50 pts)</button>
+        </div>
+        
+        <button class="btn-main" onclick="play()">GUESS NOW</button>
+        <p id="msg">First guess starts the music!</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+:root {
+    --primary: #00d4ff;
+    --accent: #ff2e63;
+    --gold: #ffd700;
+    --bg: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.85);
+}
+
+.theme-forest {
+    --primary: #4ade80;
+    --accent: #f87171;
+    --bg: #064e3b;
+    --card-bg: rgba(20, 83, 45, 0.85);
+}
+
+.theme-retro {
+    --primary: #ff00ff;
+    --accent: #00ffff;
+    --bg: #2b0054;
+    --card-bg: rgba(48, 0, 92, 0.85);
+}
+
+body, html {
+    height: 100%; margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; transition: background 0.8s ease;
+}
+
+#particleCanvas { position: absolute; top: 0; left: 0; pointer-events: none; z-index: 10; }
+
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    padding: 30px; border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    width: 350px; text-align: center; z-index: 20;
+    transition: all 0.3s ease;
+}
+
+.theme-panel { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; }
+.theme-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid white; transition: 0.3s; }
+.neon-dot { background: #00d4ff; }
+.forest-dot { background: #4ade80; }
+.retro-dot { background: #ff00ff; }
+
+.high-score { font-size: 0.75rem; color: var(--gold); margin-bottom: 10px; font-weight: bold; }
+h2 { margin: 5px 0; color: white; font-size: 2rem; }
+
+.timer-container { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 15px 0; overflow: hidden; }
+#timerBar { width: 100%; height: 100%; background: var(--accent); }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px; color: white; }
+.stat-box span { display: block; font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; }
+
+input { background: rgba(0,0,0,0.3); color: white; border: 2px solid #334155; padding: 12px; text-align: center; border-radius: 12px; width: 70%; font-size: 1.5rem; outline: none; }
+.btn-hint { background: var(--gold); border: none; padding: 6px 15px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+.btn-main { background: var(--primary); border: none; padding: 15px; border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; margin-top: 15px; color: #0f172a; }
+
+/* Critical State */
+.critical-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 5; transition: 0.5s; }
+.is-critical { animation: criticalPulse 1s infinite alternate; }
+@keyframes criticalPulse { 
+    from { box-shadow: inset 0 0 20px rgba(255, 0, 0, 0); } 
+    to { box-shadow: inset 0 0 150px rgba(255, 0, 0, 0.5); } 
+}
+.critical-card { border-color: var(--accent) !important; box-shadow: 0 0 30px rgba(255, 46, 99, 0.4); }
+
+.shake { animation: shake 0.3s; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+
+#msg { height: 20px; margin-top: 15px; font-weight: bold; font-size: 0.85rem; color: white; }
